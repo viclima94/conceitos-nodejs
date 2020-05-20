@@ -10,6 +10,7 @@ app.use(cors());
 
 const repositories = [];
 
+//middleware to verify the Repository ID
 function verifyId (request, response,next ) {
   const {id} = request.params;
 
@@ -21,7 +22,7 @@ function verifyId (request, response,next ) {
 
   next()
 }
-app.use('/repositories/:id', verifyId);
+app.use('/repositories/:id', verifyId); // Which routes we will use the middleware
 
 app.get("/repositories", (request, response) => {
   return response.json(repositories)
